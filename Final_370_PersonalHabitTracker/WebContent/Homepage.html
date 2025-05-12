@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">HabitApp</div>
+        <nav>
+            <a href="/Final_370_PersonalHabitTracker/Homepage.html">Home</a>
+            <a href="/Final_370_PersonalHabitTracker/About.html">About</a>   
+            <button class="login-btn" onclick="document.location='/Final_370_PersonalHabitTracker/Signup.html'">Sign up</button>         
+            <button class="login-btn" onclick="document.location='/Final_370_PersonalHabitTracker/Login.html'">Log in</button>
+        </nav>
+    </header>
+    <main>
+        <section class="Example">
+            <h1>Welcome to Habit Tracker</h1>
+            <p>Build better habits and track your progress</p>
+        </section>
+
+        <section class="tracker-preview">
+            <div class="tracker-table">
+                <h2>Your Habits</h2>
+                <form action="/Final_370_PersonalHabitTracker/HabitTrackerServlet" method="POST">
+                    <input type="hidden" name="action" value="add">
+                    <input type="text" name="name" placeholder="Habit Name" required>
+                    <input type="number" name="goal" placeholder="Daily/Weekly Goal" required>
+                    <select name="type" required>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                    </select>
+                    <button type="submit" class="cta-btn">Add Habit</button>
+                </form>
+
+                <table style="margin-top: 20px;">
+                    <tr>
+                        <th>Habit</th>
+                        <th>Goal</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                    <!-- Sample row -->
+                    <tr>
+                        <td>Drink Water</td>
+                        <td>8</td>
+                        <td>Daily</td>
+                        <td>
+                            <form action="/Final_370_PersonalHabitTracker/HabitTrackerServlet" method="POST" style="display:inline;">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="name" value="Drink Water">
+                                <button type="submit" class="cta-btn">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="preview-img">[Image Placeholder]</div>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <h3>Daily Reminders</h3>
+                <p>Stay on track with helpful reminders every day.</p>
+            </div>
+            <div class="feature">
+                <h3>Progress Charts</h3>
+                <p>Visualize your improvements with weekly graphs.</p>
+            </div>
+            <div class="feature">
+                <h3>Custom Goals</h3>
+                <p>Set and track personalized habits tailored to you.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
