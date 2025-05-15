@@ -23,6 +23,8 @@
   .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    color:#333;
+    text-decoration:none;
   }
   
   nav a {
@@ -173,3 +175,29 @@
     margin-bottom: 0.5rem;
   }
   
+
+/*Mainpage.html*/
+
+ .tab-nav a, .tab-nav button {
+  margin: 0 0.5rem;
+   text-decoration: none;
+  color: #333;
+    font-weight: bold;
+     background: none;
+     border: none;
+     cursor: pointer;
+ font-size: 1rem;
+      }
+
+      .tab-nav a:hover, .tab-nav button:hover {
+          text-decoration: underline;
+      }
+
+      .section {
+          display: none;
+          padding: 2rem;
+      }
+
+      .section.active {
+          display: block;
+      }
