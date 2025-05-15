@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Protect page 
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>-->
+
     <header>
         <a class="logo" href="Homepage.html">HabitApp</a>
         <nav class="tab-nav">
@@ -62,6 +69,13 @@
             localStorage.removeItem("loggedIn");
             window.location.href = "Homepage.html";
         }
+        //Example Habits for Calendar grid
+        let dummyCheckins = [
+            { date: '2025-05-01', habit: 'Drink Water' },
+            { date: '2025-05-03', habit: 'Go for a Walk' },
+            { date: '2025-05-03', habit: 'Take Out The Trash' },
+            { date: '2025-05-07', habit: 'Drink Water' }
+        ];
 
         function loadCalendar() {
             const calendar = document.getElementById('calendarGrid');
@@ -84,12 +98,19 @@
             }
 
             for (let day = 1; day <= daysInMonth; day++) {
-                table += `<td>${day}</td>`;
-                    if ((day + firstDay) % 7 === 0){ 
-                        table += "</tr><tr>";
-                }
-            }
+                const dateStr = `${year}-${(month + 1).toString().padStart(2,'0')}-${day.toString().padStart(2,'0')}`;
+                const habitsForDay = dummyCheckins.filter(h => h.date === dateStr);
 
+                table += `<td style="vertical-align: top;"><strong>${day}</strong>`;
+                habitsForDay.forEach(habit => {
+                    table += `<div class="habit-pill">${habit.habit}</div>`;
+                });
+                table += `</td>`;
+
+                if ((day + firstDay) % 7 === 0){
+                    table += "</tr><tr>";
+                } 
+            }
             table += "</tr></table>";
             calendar.innerHTML = table;
         }
