@@ -178,26 +178,57 @@
 
 /*Mainpage.html*/
 
- .tab-nav a, .tab-nav button {
+.tab-nav a, .tab-nav button {
   margin: 0 0.5rem;
-   text-decoration: none;
+  text-decoration: none;
   color: #333;
-    font-weight: bold;
-     background: none;
-     border: none;
-     cursor: pointer;
- font-size: 1rem;
-      }
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
 
-      .tab-nav a:hover, .tab-nav button:hover {
-          text-decoration: underline;
-      }
+.tab-nav a:hover, .tab-nav button:hover {
+  text-decoration: underline;
+}
+      
+.section {
+  display: none;
+  padding: 2rem;
+}
 
-      .section {
-          display: none;
-          padding: 2rem;
-      }
+.section.active {
+  display: block;
+}
 
-      .section.active {
-          display: block;
-      }
+/*Calendar*/
+#calendarGrid table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;  
+}
+
+#calendarGrid th, #calendarGrid td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: left;
+  vertical-align: top;
+  height: 80px;         
+  width: 14.28%;       
+}
+
+#calendarGrid th {
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.habit-pill {
+  display: inline-block;
+  background: #def;
+  border-radius: 8px;
+  padding: 2px 6px;
+  margin: 2px 0;
+  font-size: 0.7em;
+  white-space: nowrap;
+}
