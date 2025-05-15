@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">HabitApp</div>
+      <a class="logo" href="Homepage.html">HabitApp</a>
         <nav>
           <a href="Homepage.html">Home</a>
           <a href="#">About</a>
@@ -19,17 +19,32 @@
     <h1>Sign up</h1>
     <p class="subtext">Create your free account to start tracking habits</p>
 
-    <form class="login-form" action="/signup" method="POST">
+    <form class="login-form" action="/Login.html" method="POST">
       <input type="text" name="name" placeholder="Full Name" required>
       <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-      <button type="submit" class="cta-btn">Create Account</button>
+      <input type="password" id="password" placeholder="Password" onkeyup="check()">
+      <input type="password" id="confirm_password" placeholder="Confirm Password" onkeyup="check()" required>
+      <span id='message'></span>
+      <button type="submit" id = "submit" class="cta-btn" disabled>Create Account</button>
     </form>
-
     <div class="links">
       <p>Already have an account? <a href="Login.html">Log in</a></p>
     </div>
   </main>
+  <script>
+    let signup_check
+    var check = function() {
+      if (document.getElementById('password').value ==
+        document.getElementById('confirm_password').value) {
+          document.getElementById('message').innerHTML = '';
+          document.getElementById('submit').disabled = false;
+
+      } else {
+                document.getElementById('message').style.color = 'red';
+        document.getElementById('message').innerHTML = 'Passwords Must Match';
+        document.getElementById('submit').disabled = true;
+      }
+    }
+  </script>  
 </body>
 </html>
