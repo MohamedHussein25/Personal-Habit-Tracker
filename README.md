@@ -1,10 +1,10 @@
 Final Project: Personal Habit Tracker    05-22-2025
 
 Our Group Members:
-1-	Mohamed Hussein
-2-	Andrew Rengel
-3-	Asfandyar Ashraf 
-4-	Shiwlee Rahman
+1. Mohamed Hussein
+2. Andrew Rengel
+3. 	Asfandyar Ashraf
+4. 	Shiwlee Rahman
 
 This ZIP file contains all project files for our submission.
 
