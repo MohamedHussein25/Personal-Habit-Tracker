@@ -18,6 +18,6 @@ Contents:
 6. VTM Sprint 3.xlsx               -> Traceability Matrix for Sprint 3 used by QA Tester:
 7. VTM Sprint 4.xlsx               -> Traceability Matrix for Sprint 4 used by QA Tester:
 8. Project Overview.pdf            -> Brief explanation of the purpose of the webapp we created
-9. 
+9. deployment_guide.txt            -> Technical guide to help developers rebuild our app
 
 Please refer to 'deployment_guide.txt' for full build and deployment steps.
