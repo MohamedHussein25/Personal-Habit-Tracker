@@ -20,5 +20,7 @@ Contents:
 8. Project Overview -Personal Habit Tracker.pdf             -> Brief explanation of the purpose of the webapp we created
 9. deployment_guide.txt                                     -> Technical guide to help developers rebuild our app
 10. how_to_manual.txt                                       -> Necessary system requirements, installation and configuration to rebuild project from scratch
+11. User_Manual.pdf                                         -> A user-friendly guide on how to use our app
+12. database_schema.pdf                                     -> An outline of the schema used in MySQL database
 
 Please refer to 'deployment_guide.txt' for full build and deployment steps.
