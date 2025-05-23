@@ -9,5 +9,21 @@ System Requirements:
 - Database: MySQL 8.0
 
 Installation Steps: 
+-------------------
 1. Install Java JDK from 'https://www.oracle.com/java/technologies/javase-downloads.html'
-2. 
+2. Install Eclipse IDE for Enterprise Java and Web Developers
+3. Download and install Apache from 'https://httpd.apache.org/download.cgi'
+4. Download and install Apache Tomcat 9.0 or later from 'https://tomcat.apache.org/download-90.cgi' 
+5. 
+
+Database Setup: 
+---------------
+1. Install MySQL and create a new schema called ''
+2. Use the script found in '' to create the necessary tables
+
+Configuration:
+--------------
+- Modify `/src/main/java/edu/cs/HabitTrackerServlet.java` (found in /Final_370_PersonalHabitTracker) if your MySQL username/password is different
+- Ensure MySQL server is running before trying to launch the app
+
+You should now be able to access the app at: http://localhost/habit-tracker
