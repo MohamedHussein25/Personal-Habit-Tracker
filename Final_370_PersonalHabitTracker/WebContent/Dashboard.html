@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>HabitApp Dashboard</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="logo" href="Homepage.html">HabitApp</a>
+<nav class="tab-nav">
+<a href="#" onclick="showSection('dashboard')">Dashboard</a>
+<a href="#" onclick="showSection('calendar')">Calendar</a>
+<a href="#" onclick="showSection('streaks')">Streaks</a>
+<a href="#" onclick="showSection('badges')">Badges</a>
+<a href="#" onclick="showSection('settings')">Settings</a>
+<button onclick="logout()">Logout</button>
+</nav>
+</header>
+
+<section id="habit-controls" style="text-align:center; margin: 2rem;">
+<h2>Manage Your Habits</h2>
+<div style="margin: 1rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px;">
+<h3>Add Habit</h3>
+<form action="/Final_370_PersonalHabitTracker/HabitTrackerServlet" method="POST">
+<input name="action" type="hidden" value="add"/>
+<input name="name" placeholder="New Habit Name" required="" type="text"/>
+<input name="goal" placeholder="Goal Amount" required="" type="number"/>
+<select name="type" required="">
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+</select>
+<button class="cta-btn" type="submit">Add</button>
+</form>
+</div>
+<div style="margin: 1rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px;">
+<h3>Edit Habit</h3>
+<form action="/Final_370_PersonalHabitTracker/HabitTrackerServlet" method="POST">
+<input name="action" type="hidden" value="edit"/>
+<input name="name" placeholder="Habit Name to Edit" required="" type="text"/>
+<input name="goal" placeholder="New Goal" required="" type="number"/>
+<select name="type" required="">
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+</select>
+<button class="cta-btn" type="submit">Edit</button>
+</form>
+</div>
+<div style="margin: 1rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px;">
+<h3>Delete Habit</h3>
+<form action="/Final_370_PersonalHabitTracker/HabitTrackerServlet" method="POST">
+<input name="action" type="hidden" value="delete"/>
+<input name="name" placeholder="Habit Name to Delete" required="" type="text"/>
+<button class="cta-btn" type="submit">Delete</button>
+</form>
+</div>
+<div style="margin: 1rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px;">
+<h3>Habit Check-In</h3>
+<form action="/Final_370_PersonalHabitTracker/HabitTrackerServlet" method="POST">
+<input name="action" type="hidden" value="checkin"/>
+<input name="name" placeholder="Habit Name to Check In" required="" type="text"/>
+<button class="cta-btn" type="submit">Check In</button>
+</form>
+</div>
+</section>
+<!-- Protect page 
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>-->
+
+<main>
+<section class="section active" id="dashboard">
+<h1>My Habits</h1>
+<table>
+<tr>
+</tr>
+</table>
+<button class="cta-btn" onclick="alert('Add Habit Logic Here')">+ Add Habit</button>
+<!-- Check-In Form -->
+<div id="streakCounter" style="margin-top: 1rem; text-align: center; font-size: 1.2rem; color: #27ae60;">
+        Current Streak: <span id="streakValue">0</span> days
+    </div>
+<div id="motivationMessage" style="text-align: center; margin: 1rem auto; padding: 1rem; max-width: 400px; background: #dff0d8; border: 1px solid #3c763d; border-radius: 8px; color: #3c763d; display: none;">
+        🎉 Great job! You've reached a 7-day streak!
+    </div>
+<label for="habitSelector">Select a Habit:</label>
+<select id="habitSelector" onchange="loadHabitProgress()">
+<option value="Drink Water">Drink Water</option>
+<option value="Exercise">Exercise</option>
+</select>
+<canvas height="200" id="progressChart" style="margin: 2rem auto;" width="400"></canvas>
+</section></main>
+<script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if (id === "calendar") loadCalendar();
+        }
+
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            window.location.href = "Homepage.html";
+        }
+        //Example Habits for Calendar grid
+       // let dummyCheckins = [
+            //{ date: '2025-05-01', habit: 'Drink Water' },
+          //  { date: '2025-05-03', habit: 'Go for a Walk' },
+          //  { date: '2025-05-03', habit: 'Take Out The Trash' },
+         //   { date: '2025-05-07', habit: 'Drink Water' }
+     //   ];
+
+        function loadCalendar() {
+            const calendar = document.getElementById('calendarGrid');
+            calendar.innerHTML = "";  // clear previous
+
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = date.getMonth();
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let table = "<table><tr>";
+            const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            weekdays.forEach(day => table += `<th>${day}</th>`);
+            table += "</tr><tr>";
+
+            for (let i = 0; i < firstDay; i++) {
+                table += "<td></td>";
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${(month + 1).toString().padStart(2,'0')}-${day.toString().padStart(2,'0')}`;
+                const habitsForDay = dummyCheckins.filter(h => h.date === dateStr);
+
+                table += `<td style="vertical-align: top;"><strong>${day}</strong>`;
+                habitsForDay.forEach(habit => {
+                    table += `<div class="habit-pill">${habit.habit}</div>`;
+                });
+                table += `</td>`;
+
+                if ((day + firstDay) % 7 === 0){
+                    table += "</tr><tr>";
+                } 
+            }
+            table += "</tr></table>";
+            calendar.innerHTML = table;
+        }
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  let progressChart;
+
+  function loadHabitProgress() {
+    const habitName = document.getElementById('habitSelector').value;
+
+    fetch(`/Final_370_PersonalHabitTracker/progress-data?habit=${encodeURIComponent(habitName)}`)
+      .then(response => response.json())
+      .then(json => {
+        const streak = json.data.reduce((a, b) => a + b, 0);
+        document.getElementById('streakValue').innerText = streak;
+
+        const msgBox = document.getElementById('motivationMessage');
+        if (streak >= 7) {
+          msgBox.style.display = 'block';
+        } else {
+          msgBox.style.display = 'none';
+        }
+
+        if (progressChart) {
+          progressChart.data.labels = json.labels;
+          progressChart.data.datasets[0].data = json.data;
+          progressChart.data.datasets[0].label = habitName;
+          progressChart.update();
+        } else {
+          const ctx = document.getElementById('progressChart');
+          progressChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: json.labels,
+              datasets: [{
+                label: habitName,
+                data: json.data,
+                borderColor: 'green',
+                backgroundColor: 'lightgreen',
+                fill: true,
+                tension: 0.4
+              }]
+            },
+            options: {
+              scales: {
+                y: { beginAtZero: true, max: 1 }
+              }
+            }
+          });
+        }
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', loadHabitProgress);
+</script>
+<div style="text-align:center; margin: 1rem;">
+<label>
+<input checked="" id="reminderToggle" type="checkbox"/>
+    Enable Daily Habit Reminders
+  </label>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (Notification.permission !== 'granted') {
+      Notification.requestPermission();
+    }
+
+    const now = new Date();
+    const millisUntil9am = new Date().setHours(9,0,0,0) - now;
+    if (millisUntil9am > 0 && document.getElementById('reminderToggle').checked) {
+      setTimeout(sendHabitReminder, millisUntil9am);
+    }
+  });
+
+  function sendHabitReminder() {
+    if (Notification.permission === 'granted') {
+      new Notification("🔔 Don't forget your habits today!", {
+        body: "Stay on track! Check-in and keep your streak alive!",
+        icon: "https://cdn-icons-png.flaticon.com/512/1828/1828640.png"
+      });
+    }
+  }
+</script>
+</body>
+</html>

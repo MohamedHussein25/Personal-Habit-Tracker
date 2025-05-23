@@ -1,0 +1,213 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+}
+
+.login-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid #333;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.Example {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: #eef2f5;
+}
+
+.Example h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.Example p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.tracker-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.tracker-table {
+    background: #fff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    flex: 1 1 300px;
+}
+
+.preview-img {
+    background: #ddd;
+    flex: 1 1 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 1.5rem;
+    justify-content: center;
+    background: #fff;
+}
+
+.feature {
+    flex: 1 1 250px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    border-radius: 8px;
+}
+
+.login-box {
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.login-box h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtext {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-form input {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #333;
+}
+
+.cta-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.cta-btn:hover {
+    background-color: #111;
+}
+
+.links {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.links a {
+    color: blue;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.login-form input {
+    margin-bottom: 0.5rem;
+}
+
+/* New style for form inside tracker-table */
+.tracker-table form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tracker-table input,
+.tracker-table select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.tracker-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.tracker-table th,
+.tracker-table td {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.tracker-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.tracker-table form button {
+    width: fit-content;
+    align-self: flex-start;
+}
