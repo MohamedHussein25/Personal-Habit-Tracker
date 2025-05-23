@@ -26,4 +26,4 @@ Configuration:
 - Modify `/src/main/java/edu/cs/HabitTrackerServlet.java` (found in /Final_370_PersonalHabitTracker) if your MySQL username/password is different
 - Ensure MySQL server is running before trying to launch the app
 
-You should now be able to access the app at: http://localhost/habit-tracker
+You should now be able to access the app at: http://localhost/Final_370_PersonalHabitTracker
