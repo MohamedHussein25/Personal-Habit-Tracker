@@ -24,7 +24,8 @@ Contents:
 12. User_Manual.pdf                                         -> A user-friendly guide on how to use our app
 13. database_schema.pdf                                     -> An outline of the schema used in MySQL database
 14. Uml_Diagrams_Sequence&State.docx.jpg                    -> UML Sequence and State Diagrams
-15. Habit Tracker Limitations and Contributions             -> List of team member contributions, limitations to our app, and honor statement signed by teamn members
-16. Scrum Log                                               -> Includes list of sprints, burndown charts, and the roles of each team member during sprints
+15. Uml_Diagram.docx                                        -> UML Data Flow and Deployment Diagrams
+16. Habit Tracker Limitations and Contributions             -> List of team member contributions, limitations to our app, and honor statement signed by teamn members
+17. Scrum Log                                               -> Includes list of sprints, burndown charts, and the roles of each team member during sprints
 
 Please refer to 'deployment_guide.txt' for full build and deployment steps.
