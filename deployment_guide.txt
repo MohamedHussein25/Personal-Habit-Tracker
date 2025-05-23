@@ -1,0 +1,49 @@
+Deployment Guide – Personal Habit Tracker
+
+Tools Required:
+----------------
+- JDK: Java SE Development Kit 17
+- Apache Tomcat: Version 9.0.x
+- Apache HTTP Server: Version 2.4.x
+- MySQL Server: Version 8.0+
+- Eclipse IDE for Enterprise Java Developers (2023+)
+
+Java Project:
+---------------
+Location: /Final_370_PersonalHabitTracker
+Type: Dynamic Web Project
+Contains:
+- /src: Java servlet code
+- /WebContent: HTML/CSS and JSP files
+- /WEB-INF/web.xml: servlet and routing config
+- /lib: JAR libraries (MySQL connector)
+
+Tomcat Setup:
+---------------
+1. Configure Tomcat in Eclipse:
+   - Window > Preferences > Server > Runtime > Add > Apache Tomcat v9
+2. Right-click project → Run on Server → Choose Tomcat
+3. Edit server.xml and add:
+   <Connector port="8080" protocol="HTTP/1.1"
+			   address="127.0.0.1"
+               connectionTimeout="20000"
+    secret="whatever"
+               redirectPort="8443" />
+
+Apache HTTP Server Setup:
+---------------------------
+1. Edit httpd.conf and add:
+    LoadModule proxy_module modules/mod_proxy.so
+
+    <Proxy *>
+      Require all granted
+    </Proxy>
+    ProxyPass /examples/   http://127.0.0.1:8080/examples/	    secret=whatever
+
+External Libraries:
+---------------------
+Included in:
+- /Final_370_PersonalHabitTracker/WebContent/WEB-INF/lib/
+
+Libraries used:
+- mysql-connector-java-8.0.28.jar

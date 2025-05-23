@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
     <wb-module deploy-name="Final_370_PersonalHabitTracker-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
@@ -7,4 +8,24 @@
         <property name="context-root" value="Final_370_PersonalHabitTracker"/>
         <property name="java-output-path" value="/Final_370_PersonalHabitTracker/target/classes"/>
     </wb-module>
+=======
+        
+    <wb-module deploy-name="Final_370_PersonalHabitTracker-0.0.1-SNAPSHOT">
+                
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+                
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+                
+        <property name="context-root" value="Final_370_PersonalHabitTracker"/>
+                
+        <property name="java-output-path" value="/Final_370_PersonalHabitTracker/build/classes"/>
+            
+    </wb-module>
+    
+>>>>>>> branch 'main' of https://github.com/MohamedHussein25/Personal-Habit-Tracker
 </project-modules>
